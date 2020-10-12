@@ -18,7 +18,7 @@ def bruteforcer(target, paramData, payloadList, encoding, headers, delay, timeou
     params = getParams(target, paramData, GET)
     logger.debug_json('Bruteforcer params:', params)
     if not params:
-        logger.error('No parameters to test.')
+        #logger.error('No parameters to test.')
         quit()
     for paramName in params.keys():
         progress = 1
