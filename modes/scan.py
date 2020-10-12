@@ -50,7 +50,6 @@ def scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, sk
     if find:
         params = arjun(url, GET, headers, delay, timeout)
     if not params:
-        logger.error('No parameters to test.')
         quit()
     WAF = wafDetector(
         url, {list(params.keys())[0]: xsschecker}, headers, GET, delay, timeout)
