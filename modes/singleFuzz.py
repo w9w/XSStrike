@@ -30,7 +30,7 @@ def singleFuzz(target, paramData, encoding, headers, delay, timeout):
     params = getParams(target, paramData, GET)
     logger.debug_json('Single fuzz params:', params)
     if not params:
-        logger.error('No parameters to test.')
+        #logger.error('No parameters to test.')
         quit()
     WAF = wafDetector(
         url, {list(params.keys())[0]: xsschecker}, headers, GET, delay, timeout)
