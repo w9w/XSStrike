@@ -83,7 +83,8 @@ args = parser.parse_args()
 
 # Pull all parameter values of dict from argparse namespace into local variables of name == key
 # The following works, but the static checkers are too static ;-) locals().update(vars(args))
-target = args.target
+
+target = str(sys.stdin.readlines()).replace("['","").replace("']","").replace("\\","").replace("\n","")
 path = args.path
 jsonData = args.jsonData
 paramData = args.paramData
@@ -136,6 +137,7 @@ core.config.globalVariables['checkedScripts'] = set()
 core.config.globalVariables['checkedForms'] = {}
 core.config.globalVariables['definitions'] = json.loads('\n'.join(reader(sys.path[0] + '/db/definitions.json')))
 
+print("Checking %s" %target)
 if path:
     paramData = converter(target, target)
 elif jsonData:
